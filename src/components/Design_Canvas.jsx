@@ -3,6 +3,7 @@ import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 
 class Design_Canvas extends React.Component{
+    
     constructor(props){
         super(props);
         this.state = {
@@ -77,22 +78,25 @@ class Design_Canvas extends React.Component{
     render(){
         return(
             <>
-            {
-                this.props.src && 
-                <ReactCrop
-                  src={this.props.src}
-                  crop={this.state.crop}
-                  locked={true}
-                  ruleOfThirds
-                  onImageLoaded={this.onImageLoaded}
-                  onComplete={this.onCropComplete}
-                  onChange={this.onCropChange}
-                />
-            }
-            {
-                this.state.croppedImageUrl &&
-                <img alt="Crop" style={{ maxWidth: '100%' }} src={this.state.croppedImageUrl} />
-            }
+                <h1>Crop By {this.state.crop.width} X {this.state.crop.height}</h1>
+                {
+                    this.props.src && 
+                    <ReactCrop
+                    src={this.props.src}
+                    crop={this.state.crop}
+                    locked={true}
+                    ruleOfThirds
+                    onImageLoaded={this.onImageLoaded}
+                    onComplete={this.onCropComplete}
+                    onChange={this.onCropChange}
+                    />
+                }
+                <h1>Preview : ({this.state.crop.width} X {this.state.crop.height}) </h1>
+                {
+                    this.state.croppedImageUrl &&
+                    <img alt="Crop" style={{ maxWidth: '100%' }} src={this.state.croppedImageUrl} />
+                }
+                <hr />
             </>
         )
     }
