@@ -31,6 +31,7 @@ class Upload_Image extends React.Component {
                     })
                 }
             )
+            return true;
         });
 
     }
